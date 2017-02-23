@@ -101,10 +101,15 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   private uploadMedia() {
+    console.log("Reached UploadMeaid FUnc");
     if(this.isProfilPicChanged)
-      this.cloudinaryService.uploadImages(this.profilePicSrc, this.mediaType);
+      // this.cloudinaryService.uploadImages(this.profilePicSrc, this.mediaType);
+      this.userService.imageUpload(this.profilePicSrc, this.mediaType)
+        .subscribe();
     else
-      this.cloudinaryService.uploadImages(this.coverPhotoSrc, this.mediaType);
+      this.userService.imageUpload(this.coverPhotoSrc, this.mediaType)
+        .subscribe();
+      // this.cloudinaryService.uploadImages(this.coverPhotoSrc, this.mediaType);
 }
 
   onUpdateProfilePicture() {

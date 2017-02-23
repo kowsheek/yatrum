@@ -108,4 +108,19 @@ export class UserService {
   }
 
 
+  /**Image Uplaod */
+  imageUpload(image, mediaType): Observable<any> {
+    let params = {image: image, media_type: mediaType};
+
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': this.getUserAuthToken()
+    })
+
+    return this.http.post(`${this.apiLink}/users/upload_media`, params, { headers: headers })
+      .map(response => response.json());
+  }
+
+
+
 }
